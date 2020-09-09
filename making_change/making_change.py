@@ -3,9 +3,33 @@
 import sys
 
 def making_change(amount, denominations):
-  # Your code here
+  if cache is None:
+    cache = {}
 
-  pass
+  if amount == 0 and amount < 5:
+    return 1
+
+  if amount < 0:
+    return 0
+
+  if cache and cache[amount]:
+    return cache[amount]
+
+
+  for coin in denominations:
+    cache[amount] = making_change(amount-coin, denominations)
+
+  return cache[amount]
+
+
+
+
+
+    # return num_ways_to_make_change
+    # for i in range(0, len(denominations)):
+    #     for j in range(denominations[i], amount + 1):
+    #         table[j] += table[j - denominations[i]]
+
 
 
 if __name__ == "__main__":
